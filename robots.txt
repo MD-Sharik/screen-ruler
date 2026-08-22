@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://md-sharik.github.io/screen-ruler/sitemap.xml
+Sitemap: https://onlinescale.me/sitemap.xml

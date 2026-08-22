@@ -2,7 +2,7 @@
 
 A free online ruler that measures real inches and centimeters directly on your screen.
 
-**Live site:** https://md-sharik.github.io/screen-ruler/
+**Live site:** https://onlinescale.me/
 
 ## Why it needs calibration
 

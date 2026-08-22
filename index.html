@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Online Screen Ruler – Accurate Inch &amp; CM Ruler On Your Screen</title>
+<meta name="description" content="A free online ruler that measures real inches and centimeters directly on your screen. Calibrate once to your exact display and measure anything — no app, no signup, 100% in your browser.">
+<meta name="keywords" content="online ruler, screen ruler, cm ruler, inch ruler, ruler online free, actual size ruler, measure on screen, virtual ruler, digital ruler">
+<meta name="author" content="Screen Ruler">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://md-sharik.github.io/screen-ruler/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Online Screen Ruler – Accurate Inch & CM Ruler On Your Screen">
+<meta property="og:description" content="A free, calibrated online ruler for measuring real-world inches and centimeters directly on your screen. No install, no backend, fully private.">
+<meta property="og:url" content="https://md-sharik.github.io/screen-ruler/">
+<meta property="og:site_name" content="Screen Ruler">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Online Screen Ruler – Accurate Inch & CM Ruler On Your Screen">
+<meta name="twitter:description" content="Calibrate once, then measure real inches and centimeters directly on your screen. Free, private, and works entirely in your browser.">
+
+<meta name="theme-color" content="#ffffff">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect x='6' y='30' width='88' height='40' rx='4' fill='%23ffffff' stroke='%232563eb' stroke-width='4'/%3E%3Cline x1='20' y1='30' x2='20' y2='45' stroke='%232563eb' stroke-width='4'/%3E%3Cline x1='35' y1='30' x2='35' y2='40' stroke='%232563eb' stroke-width='4'/%3E%3Cline x1='50' y1='30' x2='50' y2='45' stroke='%232563eb' stroke-width='4'/%3E%3Cline x1='65' y1='30' x2='65' y2='40' stroke='%232563eb' stroke-width='4'/%3E%3Cline x1='80' y1='30' x2='80' y2='45' stroke='%232563eb' stroke-width='4'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Screen Ruler",
+  "url": "https://md-sharik.github.io/screen-ruler/",
+  "description": "A free online ruler that measures real inches and centimeters directly on your screen after a one-time visual calibration.",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+
+<style>
+  :root{
+    --bg:#f7f9fc;
+    --paper:#ffffff;
+    --ink:#0f172a;
+    --ink-soft:#64748b;
+    --line:#e2e8f0;
+    --line-dash:#cbd5e1;
+    --accent:#2563eb;
+    --accent-hover:#1d4ed8;
+    --accent-soft:#eff4ff;
+    --accent-ink:#ffffff;
+    --radius:16px;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+  }
+
+  /* Header */
+  header.site{
+    background:var(--paper);
+    border-bottom:1px solid var(--line);
+  }
+  .header-inner{
+    max-width:1120px;margin:0 auto;padding:16px 24px;
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+  }
+  .brand{display:flex;align-items:center;gap:11px;font-weight:700;font-size:19px;letter-spacing:-.02em;}
+  .brand-mark{
+    width:34px;height:34px;border-radius:9px;background:var(--accent);
+    display:flex;align-items:center;justify-content:center;flex:none;
+  }
+  .unit-toggle{
+    display:inline-flex;background:var(--bg);border:1px solid var(--line);
+    border-radius:999px;padding:3px;
+  }
+  .unit-toggle button{
+    border:none;background:transparent;color:var(--ink-soft);
+    font:inherit;font-weight:600;font-size:13.5px;
+    padding:7px 18px;border-radius:999px;cursor:pointer;transition:all .15s ease;
+  }
+  .unit-toggle button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);}
+
+  /* Hero */
+  main{max-width:1120px;margin:0 auto;padding:0 24px 90px;}
+  .hero{text-align:center;padding:72px 0 40px;}
+  h1{
+    font-size:clamp(34px,5.4vw,58px);line-height:1.08;margin:0 0 20px;
+    font-weight:800;letter-spacing:-.035em;
+  }
+  .lede{
+    color:var(--ink-soft);font-size:clamp(16px,2vw,19px);
+    max-width:34em;margin:0 auto;font-weight:400;
+  }
+
+  /* Ruler card */
+  .ruler-card{
+    background:var(--paper);
+    border:2px dashed var(--line-dash);
+    border-radius:22px;
+    padding:40px 36px 34px;
+    max-width:900px;margin:0 auto;
+  }
+  .ruler-track-wrap{overflow-x:auto;}
+  canvas#ruler{display:block;width:100%;height:118px;touch-action:pan-y;}
+
+  .card-actions{display:flex;flex-direction:column;align-items:center;gap:14px;margin-top:30px;}
+  .btn{
+    font:inherit;font-weight:600;font-size:15px;
+    border-radius:999px;border:1px solid transparent;
+    background:var(--paper);color:var(--ink);
+    padding:13px 30px;cursor:pointer;transition:background .15s ease;
+  }
+  .btn.primary{background:var(--accent);color:var(--accent-ink);}
+  .btn.primary:hover{background:var(--accent-hover);}
+  .btn.ghost{border-color:var(--line);color:var(--ink-soft);padding:9px 18px;font-size:14px;}
+  .btn.ghost:hover{background:var(--bg);}
+  .btn.link{border:none;background:none;color:var(--ink-soft);text-decoration:underline;padding:10px 6px;font-size:14px;}
+  .fineprint{font-size:13px;color:var(--ink-soft);}
+  .fineprint b{color:var(--accent);font-weight:600;}
+
+  /* Zoom notice */
+  .zoom-warn{
+    display:none;max-width:900px;margin:0 auto 20px;
+    background:var(--accent-soft);border:1px solid #c7dbff;color:#1e40af;
+    border-radius:12px;padding:13px 18px;font-size:14px;
+  }
+  .zoom-warn.show{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;}
+
+  /* Modal */
+  .modal-overlay{
+    position:fixed;inset:0;background:rgba(15,23,42,.5);backdrop-filter:blur(2px);
+    display:none;align-items:center;justify-content:center;padding:20px;z-index:50;
+  }
+  .modal-overlay.show{display:flex;}
+  .modal{
+    background:var(--paper);border-radius:20px;max-width:520px;width:100%;padding:32px;
+    box-shadow:0 24px 70px rgba(15,23,42,.25);
+  }
+  .modal h2{margin:0 0 6px;font-size:22px;font-weight:700;letter-spacing:-.02em;}
+  .modal p{color:var(--ink-soft);font-size:14.5px;margin:0 0 20px;}
+  .modal label.fieldlabel{
+    display:block;font-size:13px;font-weight:600;color:var(--ink-soft);
+    margin-bottom:7px;letter-spacing:.01em;
+  }
+  .modal select{
+    width:100%;font:inherit;font-size:15px;padding:11px 13px;border-radius:11px;
+    border:1px solid var(--line);background:var(--paper);color:var(--ink);margin-bottom:22px;
+  }
+  .object-stage{
+    background:var(--bg);border:2px dashed var(--line-dash);border-radius:14px;
+    height:132px;display:flex;align-items:center;justify-content:center;
+    margin-bottom:18px;overflow:hidden;
+  }
+  #calibShape{background:var(--accent);border-radius:8px;height:74px;}
+  input[type=range]{
+    width:100%;accent-color:var(--accent);margin:0 0 4px;
+  }
+  .modal-actions{display:flex;justify-content:flex-end;align-items:center;gap:8px;margin-top:22px;}
+  .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+
+  @media (max-width:640px){
+    .hero{padding:48px 0 32px;}
+    .ruler-card{padding:28px 20px 26px;border-radius:18px;}
+    .modal{padding:24px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="header-inner">
+    <div class="brand">
+      <span class="brand-mark">
+        <svg width="20" height="20" viewBox="0 0 100 100" aria-hidden="true">
+          <rect x="6" y="32" width="88" height="36" rx="5" fill="none" stroke="#fff" stroke-width="7"/>
+          <line x1="26" y1="32" x2="26" y2="50" stroke="#fff" stroke-width="7"/>
+          <line x1="46" y1="32" x2="46" y2="44" stroke="#fff" stroke-width="7"/>
+          <line x1="66" y1="32" x2="66" y2="50" stroke="#fff" stroke-width="7"/>
+        </svg>
+      </span>
+      Screen Ruler
+    </div>
+    <div class="unit-toggle" role="group" aria-label="Measurement unit">
+      <button type="button" id="unitIn" aria-pressed="true">Inches</button>
+      <button type="button" id="unitCm" aria-pressed="false">CM</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <h1>Measure Anything On Your Screen</h1>
+    <p class="lede">A real ruler in inches and centimeters — calibrate once to your display and measure with true accuracy.</p>
+  </section>
+
+  <div class="zoom-warn" id="zoomWarn" role="alert">
+    <span>Your browser zoom changed, so the ruler may no longer be accurate.</span>
+    <button class="btn ghost" id="recalibrateNow">Recalibrate</button>
+  </div>
+
+  <div class="ruler-card">
+    <div class="ruler-track-wrap">
+      <canvas id="ruler" aria-label="On-screen ruler showing inch and centimeter markings"></canvas>
+    </div>
+    <div class="card-actions">
+      <button class="btn primary" id="calibrateBtn">Calibrate</button>
+      <p class="fineprint"><b>100% free</b> · Runs entirely in your browser · Nothing is uploaded to a server</p>
+    </div>
+  </div>
+</main>
+
+<!-- Calibration modal -->
+<div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal">
+    <h2 id="modalTitle">Calibrate your screen</h2>
+    <p>Hold a real object against your screen and drag the slider until the blue shape matches its width exactly.</p>
+    <label class="fieldlabel" for="objectSelect">Reference object</label>
+    <select id="objectSelect">
+      <option value="85.60" selected>Credit / debit / ID card — 85.60mm wide</option>
+      <option value="155.96">US Dollar bill — 155.96mm wide</option>
+      <option value="210">A4 paper (short side) — 210mm wide</option>
+      <option value="215.9">US Letter paper (short side) — 215.9mm wide</option>
+    </select>
+    <div class="object-stage">
+      <div id="calibShape" style="width:200px;"></div>
+    </div>
+    <label for="calibSlider" class="visually-hidden">Adjust size</label>
+    <input type="range" id="calibSlider" min="30" max="400" value="200" step="1">
+    <div class="modal-actions">
+      <button class="btn link" id="modalCancel">Cancel</button>
+      <button class="btn primary" id="modalConfirm">Confirm</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var STORAGE_KEY = 'screenRulerCalibration_v1';
+  var MM_PER_INCH = 25.4;
+  var unit = 'in';
+  var pxPerMM = 96 / MM_PER_INCH; // fallback estimate (~3.78) until calibrated
+  var calibrated = false;
+  var envSignature = null;
+
+  var canvas = document.getElementById('ruler');
+  var ctx = canvas.getContext('2d');
+  var calibrateBtn = document.getElementById('calibrateBtn');
+  var zoomWarn = document.getElementById('zoomWarn');
+
+  function currentEnvSignature(){
+    return window.innerWidth + 'x' + window.innerHeight + '@' + (window.devicePixelRatio || 1).toFixed(3);
+  }
+
+  function loadCalibration(){
+    try{
+      var raw = localStorage.getItem(STORAGE_KEY);
+      if(!raw) return;
+      var data = JSON.parse(raw);
+      if(data && data.pxPerMM){
+        pxPerMM = data.pxPerMM;
+        envSignature = data.envSignature;
+        calibrated = true;
+      }
+    }catch(e){ /* localStorage unavailable, fall back to estimate */ }
+  }
+
+  function saveCalibration(){
+    envSignature = currentEnvSignature();
+    try{
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({
+        pxPerMM: pxPerMM,
+        envSignature: envSignature,
+        savedAt: Date.now()
+      }));
+    }catch(e){ /* ignore quota / privacy-mode errors */ }
+  }
+
+  function updateStatus(){
+    calibrateBtn.textContent = calibrated ? 'Recalibrate' : 'Calibrate';
+  }
+
+  function checkZoomDrift(){
+    if(!calibrated) return;
+    if(envSignature && currentEnvSignature() !== envSignature){
+      zoomWarn.classList.add('show');
+    } else {
+      zoomWarn.classList.remove('show');
+    }
+  }
+
+  // ---- Ruler drawing ----
+  function cssVar(name){
+    return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  }
+
+  function drawRuler(){
+    var wrapWidth = canvas.parentElement.clientWidth;
+    if(wrapWidth <= 0) return; // no layout yet (e.g. background tab) — redraw once visible
+    var cssHeight = 118;
+    var dpr = window.devicePixelRatio || 1;
+
+    canvas.style.width = wrapWidth + 'px';
+    canvas.style.height = cssHeight + 'px';
+    canvas.width = Math.round(wrapWidth * dpr);
+    canvas.height = Math.round(cssHeight * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, wrapWidth, cssHeight);
+
+    var ink = cssVar('--ink') || '#0f172a';
+    var inkSoft = cssVar('--ink-soft') || '#64748b';
+    var accent = cssVar('--accent') || '#2563eb';
+
+    ctx.textBaseline = 'alphabetic';
+    ctx.font = '600 12px Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+
+    var baseline = 30;
+
+    // baseline rule
+    ctx.strokeStyle = inkSoft;
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(0, baseline + 0.5);
+    ctx.lineTo(wrapWidth, baseline + 0.5);
+    ctx.stroke();
+
+    if(unit === 'in'){
+      var pxPerInch = pxPerMM * MM_PER_INCH;
+      var divisions = 16; // sixteenths of an inch
+      var totalTicks = Math.ceil((wrapWidth / pxPerInch) * divisions);
+      for(var i = 0; i <= totalTicks; i++){
+        var x = (i / divisions) * pxPerInch;
+        if(x > wrapWidth) break;
+        var isInch = i % divisions === 0;
+        var isHalf = i % (divisions/2) === 0;
+        var isQuarter = i % (divisions/4) === 0;
+        var h;
+        if(isInch) h = 34;
+        else if(isHalf) h = 24;
+        else if(isQuarter) h = 17;
+        else h = 10;
+        ctx.strokeStyle = isInch ? ink : inkSoft;
+        ctx.lineWidth = isInch ? 1.6 : 1;
+        ctx.beginPath();
+        ctx.moveTo(x + 0.5, baseline);
+        ctx.lineTo(x + 0.5, baseline + h);
+        ctx.stroke();
+        if(isInch){
+          ctx.fillStyle = ink;
+          var label = String(i / divisions);
+          var tw = ctx.measureText(label).width;
+          ctx.fillText(label, Math.min(Math.max(x - tw/2, 2), wrapWidth - tw - 2), baseline + h + 17);
+        }
+      }
+    } else {
+      var pxPerCm = pxPerMM * 10;
+      var totalMm = Math.ceil((wrapWidth / pxPerCm) * 10);
+      for(var m = 0; m <= totalMm; m++){
+        var xm = (m / 10) * pxPerCm;
+        if(xm > wrapWidth) break;
+        var isCm = m % 10 === 0;
+        var isHalfCm = m % 5 === 0;
+        var hh;
+        if(isCm) hh = 34;
+        else if(isHalfCm) hh = 22;
+        else hh = 10;
+        ctx.strokeStyle = isCm ? ink : inkSoft;
+        ctx.lineWidth = isCm ? 1.6 : 1;
+        ctx.beginPath();
+        ctx.moveTo(xm + 0.5, baseline);
+        ctx.lineTo(xm + 0.5, baseline + hh);
+        ctx.stroke();
+        if(isCm){
+          ctx.fillStyle = ink;
+          var clabel = String(m / 10);
+          var ctw = ctx.measureText(clabel).width;
+          ctx.fillText(clabel, Math.min(Math.max(xm - ctw/2, 2), wrapWidth - ctw - 2), baseline + hh + 17);
+        }
+      }
+    }
+
+    // leading edge marker
+    ctx.fillStyle = accent;
+    ctx.fillRect(0, 6, 3, baseline - 6);
+  }
+
+  function scheduleRedraw(){
+    // rAF is paused while the tab is hidden, so draw directly in that case
+    if(document.hidden){ drawRuler(); }
+    else { window.requestAnimationFrame(drawRuler); }
+  }
+
+  // ---- Unit toggle ----
+  var unitInBtn = document.getElementById('unitIn');
+  var unitCmBtn = document.getElementById('unitCm');
+  function setUnit(u){
+    unit = u;
+    unitInBtn.setAttribute('aria-pressed', String(u === 'in'));
+    unitCmBtn.setAttribute('aria-pressed', String(u === 'cm'));
+    scheduleRedraw();
+  }
+  unitInBtn.addEventListener('click', function(){ setUnit('in'); });
+  unitCmBtn.addEventListener('click', function(){ setUnit('cm'); });
+
+  // ---- Calibration modal ----
+  var overlay = document.getElementById('modalOverlay');
+  var shape = document.getElementById('calibShape');
+  var slider = document.getElementById('calibSlider');
+  var objectSelect = document.getElementById('objectSelect');
+  var stage = document.querySelector('.object-stage');
+
+  function fitSliderToStage(){
+    var maxW = Math.max(60, Math.floor(stage.clientWidth) - 8);
+    slider.min = 30;
+    slider.max = maxW;
+    var val = Math.min(parseInt(slider.value, 10) || Math.round(maxW * 0.5), maxW);
+    slider.value = val;
+    shape.style.width = val + 'px';
+  }
+
+  function openModal(){
+    overlay.classList.add('show');
+    fitSliderToStage();
+  }
+  function closeModal(){
+    overlay.classList.remove('show');
+  }
+
+  calibrateBtn.addEventListener('click', openModal);
+  document.getElementById('recalibrateNow').addEventListener('click', openModal);
+  document.getElementById('modalCancel').addEventListener('click', closeModal);
+  overlay.addEventListener('click', function(e){ if(e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && overlay.classList.contains('show')) closeModal();
+  });
+
+  slider.addEventListener('input', function(){
+    shape.style.width = slider.value + 'px';
+  });
+
+  document.getElementById('modalConfirm').addEventListener('click', function(){
+    var objectWidthMM = parseFloat(objectSelect.value);
+    var renderedWidthPx = shape.getBoundingClientRect().width;
+    if(renderedWidthPx > 0 && objectWidthMM > 0){
+      pxPerMM = renderedWidthPx / objectWidthMM;
+      calibrated = true;
+      saveCalibration();
+      updateStatus();
+      zoomWarn.classList.remove('show');
+      scheduleRedraw();
+    }
+    closeModal();
+  });
+
+  // ---- Resize / zoom handling ----
+  var resizeTimer;
+  window.addEventListener('resize', function(){
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function(){
+      checkZoomDrift();
+      scheduleRedraw();
+      if(overlay.classList.contains('show')) fitSliderToStage();
+    }, 120);
+  });
+
+  // redraw when returning to the tab, in case a resize was missed while hidden
+  document.addEventListener('visibilitychange', function(){
+    if(!document.hidden) scheduleRedraw();
+  });
+
+  // ---- Init ----
+  loadCalibration();
+  updateStatus();
+  checkZoomDrift();
+  drawRuler();
+  if(document.fonts && document.fonts.ready){
+    document.fonts.ready.then(scheduleRedraw);
+  }
+})();
+</script>
+</body>
+</html>

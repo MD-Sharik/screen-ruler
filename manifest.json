@@ -1,0 +1,9 @@
+{
+  "name": "Screen Ruler",
+  "short_name": "Ruler",
+  "description": "A free, calibrated online ruler that measures real inches and centimeters on your screen.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1d5fe0"
+}

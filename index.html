@@ -182,6 +182,12 @@
     .ruler-card{padding:28px 20px 26px;border-radius:18px;}
     .modal{padding:24px;}
   }
+
+  footer.site{border-top:1px solid var(--line);margin-top:70px;}
+  .footer-inner{max-width:1120px;margin:0 auto;padding:28px 24px;display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;color:var(--ink-soft);font-size:13.5px;}
+  .footer-links{display:flex;gap:20px;flex-wrap:wrap;}
+  .footer-links a{color:var(--ink-soft);text-decoration:none;}
+  .footer-links a:hover{color:var(--accent);}
 </style>
 </head>
 <body>
@@ -227,6 +233,19 @@
     </div>
   </div>
 </main>
+
+<footer class="site">
+  <div class="footer-inner">
+    <span>© Screen Ruler</span>
+    <nav class="footer-links">
+      <a href="index.html">Ruler</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="cookie-policy.html">Cookie Policy</a>
+    </nav>
+  </div>
+</footer>
 
 <!-- Calibration modal -->
 <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">

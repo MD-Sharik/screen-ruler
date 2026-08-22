@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Contact — Screen Ruler</title>
-<meta name="description" content="Get in touch about Screen Ruler — report a bug, suggest a feature, or ask a question about the free online screen ruler tool.">
+<title>Blog — Screen Ruler</title>
+<meta name="description" content="Guides on screen resolution, pixel density, unit conversions, and real-world object sizes — from the team behind Screen Ruler.">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://onlinescale.me/contact.html">
+<link rel="canonical" href="https://onlinescale.me/blog/">
 <meta name="theme-color" content="#ffffff">
-<link rel="manifest" href="manifest.json">
+<link rel="manifest" href="../manifest.json">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect x='6' y='30' width='88' height='40' rx='4' fill='%23ffffff' stroke='%232563eb' stroke-width='4'/%3E%3Cline x1='20' y1='30' x2='20' y2='45' stroke='%232563eb' stroke-width='4'/%3E%3Cline x1='35' y1='30' x2='35' y2='40' stroke='%232563eb' stroke-width='4'/%3E%3Cline x1='50' y1='30' x2='50' y2='45' stroke='%232563eb' stroke-width='4'/%3E%3Cline x1='65' y1='30' x2='65' y2='40' stroke='%232563eb' stroke-width='4'/%3E%3Cline x1='80' y1='30' x2='80' y2='45' stroke='%232563eb' stroke-width='4'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,14 +27,23 @@
   .brand-mark{width:34px;height:34px;border-radius:9px;background:var(--accent);display:flex;align-items:center;justify-content:center;flex:none;}
   .btn{font:inherit;font-weight:600;font-size:14px;border-radius:999px;border:1px solid transparent;background:var(--accent);color:var(--accent-ink);padding:9px 20px;cursor:pointer;text-decoration:none;display:inline-block;transition:background .15s ease;}
   .btn:hover{background:var(--accent-hover);}
-  main{max-width:720px;margin:0 auto;padding:56px 24px 90px;}
-  h1{font-size:clamp(30px,4.4vw,42px);line-height:1.1;margin:0 0 24px;font-weight:800;letter-spacing:-.03em;}
-  h2{font-size:19px;margin:0 0 8px;font-weight:700;letter-spacing:-.01em;}
-  p{color:var(--ink-soft);font-size:16px;margin:0 0 16px;}
-  a{color:var(--accent);}
-  .card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:24px;margin-bottom:18px;display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;}
-  .card p{margin:4px 0 0;}
-  footer.site{border-top:1px solid var(--line);}
+
+  main{max-width:760px;margin:0 auto;padding:56px 24px 90px;}
+  h1{font-size:clamp(30px,4.4vw,42px);line-height:1.1;margin:0 0 12px;font-weight:800;letter-spacing:-.03em;}
+  .lede{color:var(--ink-soft);font-size:17px;margin:0 0 40px;max-width:52ch;}
+
+  .post-list{display:flex;flex-direction:column;gap:16px;}
+  .post-card{
+    background:var(--paper);border:1px solid var(--line);border-radius:16px;
+    padding:26px 28px;text-decoration:none;color:inherit;display:block;transition:border-color .15s ease, box-shadow .15s ease;
+  }
+  .post-card:hover{border-color:var(--accent);box-shadow:0 6px 20px rgba(37,99,235,.08);}
+  .post-card h2{font-size:20px;margin:0 0 8px;font-weight:700;letter-spacing:-.02em;color:var(--ink);}
+  .post-card p{color:var(--ink-soft);font-size:15px;margin:0 0 12px;}
+  .post-meta{color:var(--ink-soft);font-size:13px;display:flex;gap:8px;align-items:center;}
+  .post-meta .dot{width:3px;height:3px;border-radius:50%;background:var(--ink-soft);}
+
+  footer.site{border-top:1px solid var(--line);margin-top:60px;}
   .footer-inner{max-width:1120px;margin:0 auto;padding:28px 24px;display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;color:var(--ink-soft);font-size:13.5px;}
   .footer-links{display:flex;gap:20px;flex-wrap:wrap;}
   .footer-links a{color:var(--ink-soft);text-decoration:none;}
@@ -45,7 +54,7 @@
 
 <header class="site">
   <div class="header-inner">
-    <a class="brand" href="index.html">
+    <a class="brand" href="../index.html">
       <span class="brand-mark">
         <svg width="20" height="20" viewBox="0 0 100 100" aria-hidden="true">
           <rect x="6" y="32" width="88" height="36" rx="5" fill="none" stroke="#fff" stroke-width="7"/>
@@ -56,28 +65,24 @@
       </span>
       Screen Ruler
     </a>
-    <a class="btn" href="index.html">Open the ruler</a>
+    <a class="btn" href="../index.html">Open the ruler</a>
   </div>
 </header>
 
 <main>
-  <h1>Contact</h1>
-  <p>Screen Ruler is an independent, one-person project. The fastest way to reach me is on GitHub.</p>
+  <h1>Blog</h1>
+  <p class="lede">Guides on screen resolution, pixel density, unit conversions, and the real-world size of everyday objects.</p>
 
-  <div class="card">
-    <div>
-      <h2>Report a bug or request a feature</h2>
-      <p>Open an issue on the public repository — I read every one.</p>
-    </div>
-    <a class="btn" href="https://github.com/MD-Sharik/screen-ruler/issues" rel="noopener">Open an issue</a>
-  </div>
-
-  <div class="card">
-    <div>
-      <h2>Everything else</h2>
-      <p>General questions or feedback are also welcome through GitHub — either as an issue or a discussion on the repository.</p>
-    </div>
-    <a class="btn" href="https://github.com/MD-Sharik" rel="noopener">GitHub profile</a>
+  <div class="post-list">
+    <a class="post-card" href="stop-confusing-resolution-with-size.html">
+      <h2>Stop Confusing Resolution with Size: How Screen Dimensions Actually Work</h2>
+      <p>4K doesn't tell you how big a screen is. Here's how resolution, physical size, and pixel density actually relate — and how to pick the right combination.</p>
+      <div class="post-meta">
+        <span>August 22, 2026</span>
+        <span class="dot"></span>
+        <span>4 min read</span>
+      </div>
+    </a>
   </div>
 </main>
 
@@ -85,12 +90,12 @@
   <div class="footer-inner">
     <span>© Screen Ruler</span>
     <nav class="footer-links">
-      <a href="index.html">Ruler</a>
-      <a href="blog/index.html">Blog</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-      <a href="privacy-policy.html">Privacy Policy</a>
-      <a href="cookie-policy.html">Cookie Policy</a>
+      <a href="../index.html">Ruler</a>
+      <a href="index.html">Blog</a>
+      <a href="../about.html">About</a>
+      <a href="../contact.html">Contact</a>
+      <a href="../privacy-policy.html">Privacy Policy</a>
+      <a href="../cookie-policy.html">Cookie Policy</a>
     </nav>
   </div>
 </footer>

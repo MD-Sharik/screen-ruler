@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MM, CM, Inches, and Feet: A Practical Guide to When to Use Each</title>
+<meta name="description" content="Building hardware means living in a hybrid measurement reality — mm for PCBs, inches for screens, feet for cable runs. When to use each unit, and the only three conversions you actually need.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://onlinescale.me/blog/mm-cm-inches-feet-practical-guide.html">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="MM, CM, Inches, and Feet: A Practical Guide to When to Use Each">
+<meta property="og:description" content="Building hardware means living in a hybrid measurement reality — mm for PCBs, inches for screens, feet for cable runs. When to use each unit, and the only three conversions you actually need.">
+<meta property="og:url" content="https://onlinescale.me/blog/mm-cm-inches-feet-practical-guide.html">
+<meta property="og:site_name" content="Screen Ruler">
+<meta name="twitter:card" content="summary">
+
+<meta name="theme-color" content="#ffffff">
+<link rel="manifest" href="../manifest.json">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect x='6' y='30' width='88' height='40' rx='4' fill='%23ffffff' stroke='%232563eb' stroke-width='4'/%3E%3Cline x1='20' y1='30' x2='20' y2='45' stroke='%232563eb' stroke-width='4'/%3E%3Cline x1='35' y1='30' x2='35' y2='40' stroke='%232563eb' stroke-width='4'/%3E%3Cline x1='50' y1='30' x2='50' y2='45' stroke='%232563eb' stroke-width='4'/%3E%3Cline x1='65' y1='30' x2='65' y2='40' stroke='%232563eb' stroke-width='4'/%3E%3Cline x1='80' y1='30' x2='80' y2='45' stroke='%232563eb' stroke-width='4'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "MM, CM, Inches, and Feet: A Practical Guide to When to Use Each",
+  "description": "Building hardware means living in a hybrid measurement reality — mm for PCBs, inches for screens, feet for cable runs. When to use each unit, and the only three conversions you actually need.",
+  "datePublished": "2026-08-28",
+  "dateModified": "2026-08-28",
+  "author": {
+    "@type": "Person",
+    "name": "MD-Sharik",
+    "url": "https://github.com/MD-Sharik"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Screen Ruler",
+    "url": "https://onlinescale.me/"
+  },
+  "mainEntityOfPage": "https://onlinescale.me/blog/mm-cm-inches-feet-practical-guide.html"
+}
+</script>
+
+<style>
+  :root{
+    --bg:#f7f9fc;--paper:#ffffff;--ink:#0f172a;--ink-soft:#64748b;
+    --line:#e2e8f0;--accent:#2563eb;--accent-hover:#1d4ed8;--accent-soft:#eff4ff;--accent-ink:#ffffff;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{background:var(--bg);color:var(--ink);font-family:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased;}
+  header.site{background:var(--paper);border-bottom:1px solid var(--line);}
+  .header-inner{max-width:1120px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+  .brand{display:flex;align-items:center;gap:11px;font-weight:700;font-size:19px;letter-spacing:-.02em;color:var(--ink);text-decoration:none;}
+  .brand-mark{width:34px;height:34px;border-radius:9px;background:var(--accent);display:flex;align-items:center;justify-content:center;flex:none;}
+  .btn{font:inherit;font-weight:600;font-size:14px;border-radius:999px;border:1px solid transparent;background:var(--accent);color:var(--accent-ink);padding:9px 20px;cursor:pointer;text-decoration:none;display:inline-block;transition:background .15s ease;}
+  .btn:hover{background:var(--accent-hover);}
+
+  main{max-width:700px;margin:0 auto;padding:56px 24px 90px;}
+  .crumb{font-size:14px;margin:0 0 20px;}
+  .crumb a{color:var(--ink-soft);text-decoration:none;}
+  .crumb a:hover{color:var(--accent);}
+
+  h1{font-size:clamp(27px,4.2vw,38px);line-height:1.18;margin:0 0 14px;font-weight:800;letter-spacing:-.03em;}
+  .meta{color:var(--ink-soft);font-size:14px;margin:0 0 36px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+  .meta .dot{width:3px;height:3px;border-radius:50%;background:var(--ink-soft);}
+
+  article h2{font-size:21px;margin:36px 0 10px;font-weight:700;letter-spacing:-.02em;}
+  article p{color:var(--ink-soft);font-size:16.5px;margin:0 0 16px;}
+  article ul{margin:0 0 16px;padding-left:0;list-style:none;}
+  article li{color:var(--ink-soft);font-size:15.5px;margin-bottom:10px;padding-left:0;}
+  article li strong, article p strong{color:var(--ink);}
+  article code{background:var(--accent-soft);color:#1e3a8a;padding:2px 6px;border-radius:5px;font-size:14.5px;}
+
+  .unit-card{
+    background:var(--paper);border:1px solid var(--line);border-radius:14px;
+    padding:22px 24px;margin:0 0 18px;
+  }
+  .unit-card ul{margin:0;}
+  .unit-card li{margin-bottom:8px;}
+  .unit-card li:last-child{margin-bottom:0;}
+
+  .bridge-list{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:6px 24px;margin:0 0 22px;}
+  .bridge-list li{padding:14px 0;border-bottom:1px solid var(--line);margin:0;}
+  .bridge-list li:last-child{border-bottom:none;}
+  .bridge-list code{font-size:15px;}
+
+  .callout{
+    background:var(--accent-soft);border:1px solid #c7dbff;border-radius:14px;
+    padding:18px 22px;margin:0 0 22px;
+  }
+  .callout p{margin:0;color:#1e3a8a;font-size:15px;}
+
+  .cta{
+    background:var(--accent-soft);border:1px solid #c7dbff;border-radius:16px;
+    padding:24px 26px;margin:44px 0 8px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;
+  }
+  .cta p{margin:0;color:#1e3a8a;font-size:15px;max-width:40ch;}
+  .cta p strong{color:#1e3a8a;}
+
+  footer.site{border-top:1px solid var(--line);margin-top:60px;}
+  .footer-inner{max-width:1120px;margin:0 auto;padding:28px 24px;display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;color:var(--ink-soft);font-size:13.5px;}
+  .footer-links{display:flex;gap:20px;flex-wrap:wrap;}
+  .footer-links a{color:var(--ink-soft);text-decoration:none;}
+  .footer-links a:hover{color:var(--accent);}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="header-inner">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark">
+        <svg width="20" height="20" viewBox="0 0 100 100" aria-hidden="true">
+          <rect x="6" y="32" width="88" height="36" rx="5" fill="none" stroke="#fff" stroke-width="7"/>
+          <line x1="26" y1="32" x2="26" y2="50" stroke="#fff" stroke-width="7"/>
+          <line x1="46" y1="32" x2="46" y2="44" stroke="#fff" stroke-width="7"/>
+          <line x1="66" y1="32" x2="66" y2="50" stroke="#fff" stroke-width="7"/>
+        </svg>
+      </span>
+      Screen Ruler
+    </a>
+    <a class="btn" href="../index.html">Open the ruler</a>
+  </div>
+</header>
+
+<main>
+  <p class="crumb"><a href="index.html">← Back to blog</a></p>
+
+  <h1>MM, CM, Inches, and Feet: A Practical Guide to When to Use Each</h1>
+  <p class="meta">
+    <span>MD-Sharik</span>
+    <span class="dot"></span>
+    <span>August 28, 2026</span>
+    <span class="dot"></span>
+    <span>4 min read</span>
+  </p>
+
+  <article>
+    <p>If you're building hardware, configuring servers, or engineering frontends, you don't get the luxury of picking one measurement system. You live in a hybrid reality: you buy a 27-inch monitor, but mount it with 100mm VESA screws. You buy Cat6 ethernet by the foot, but check your CPU cooler clearance in millimeters.</p>
+    <p>There's no point trying to force everything into one unit. What actually helps is knowing which unit fits which situation, and the handful of conversions that bridge them. Here's the breakdown for the four units you'll actually run into.</p>
+
+    <h2>Millimeters (MM) — the high-precision standard</h2>
+    <div class="unit-card">
+      <ul>
+        <li><strong>Use it when:</strong> a wrong decision breaks something small — PC hardware clearances, 3D printing, server component fit, anything with ports or standoffs.</li>
+        <li><strong>Example:</strong> checking whether a graphics card clears your case's front intake fans, or matching motherboard standoff screws. Millimeters keep you working in whole numbers instead of sixteenths and thirty-seconds of an inch.</li>
+        <li><strong>Real-world scale:</strong> a standard ID or credit card is 0.76mm thick (ISO/IEC 7810). A typical PC case fan is 120mm across.</li>
+      </ul>
+    </div>
+
+    <h2>Centimeters (CM) — the mid-range metric</h2>
+    <div class="unit-card">
+      <ul>
+        <li><strong>Use it when:</strong> something is too big for millimeters to be convenient but too small to bother with meters — desk footprints, packaging, a server chassis.</li>
+        <li><strong>Example:</strong> planning desk space for dual monitors, or checking whether a desk you're about to buy will actually fit the room.</li>
+        <li><strong>Real-world scale:</strong> 1cm is exactly 10mm, and roughly the diameter of a AAA battery (10.5mm).</li>
+      </ul>
+    </div>
+
+    <h2>Inches (In) — the tech and display default</h2>
+    <div class="unit-card">
+      <ul>
+        <li><strong>Use it when:</strong> you're dealing with screen sizes (phones, tablets, monitors, TVs), server racks, or UI design grids.</li>
+        <li><strong>Example:</strong> server racks are standardized at 19 inches wide (EIA-310). In CSS, 1 inch is permanently defined as 96 pixels — not an estimate that might update with higher-resolution screens, but a fixed part of the spec, precisely so layouts stay predictable regardless of the display. High-DPI screens work around that fixed ratio via <code>devicePixelRatio</code> scaling rather than changing it.</li>
+        <li><strong>Real-world scale:</strong> 1 inch is exactly 2.54cm or 25.4mm — roughly the length from the tip of your thumb to the first knuckle.</li>
+      </ul>
+    </div>
+
+    <h2>Feet (Ft) — the spatial scale</h2>
+    <div class="unit-card">
+      <ul>
+        <li><strong>Use it when:</strong> you're thinking at human scale — room dimensions, ceiling heights, long cable runs. Past about 36 inches, multiplying by 12 to get yards stops being convenient, and picturing meters isn't intuitive either.</li>
+        <li><strong>Example:</strong> ordering bulk Cat6, HDMI, or power cable — measure the run in feet, then add roughly 10% for slack and the fact that cable can't turn corners at a perfect right angle.</li>
+        <li><strong>Real-world scale:</strong> 1 foot is 12 inches, or about 30.5cm — a standard wooden school ruler.</li>
+      </ul>
+    </div>
+
+    <h2>The Only Three Things You Actually Need to Know</h2>
+    <p>You don't need a full conversion table memorized to work across all four. These three cover almost everything:</p>
+    <ul class="bridge-list">
+      <li><strong>The bridge:</strong> <code>1 in = 25.4mm</code> — a 2-inch gap is 50.8mm.</li>
+      <li><strong>The quick estimate:</strong> <code>1 in ≈ 2.5cm</code> (×10, ÷4) — close enough for eyeballing, not for anything that needs to fit.</li>
+      <li><strong>The space converter:</strong> <code>1 ft ≈ 30.5cm</code>.</li>
+    </ul>
+
+    <div class="callout">
+      <p>When precision actually matters, skip the tape measure and use a cheap digital caliper set to mm. It removes the guesswork that a stretched tape or a squinted-at ruler mark introduces.</p>
+    </div>
+  </article>
+
+  <div class="cta">
+    <p><strong>No caliper on hand?</strong> Screen Ruler calibrates once to your display and shows accurate mm, cm, and inch scales directly on screen.</p>
+    <a class="btn" href="../index.html">Try the ruler</a>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="footer-inner">
+    <span>© Screen Ruler</span>
+    <nav class="footer-links">
+      <a href="../index.html">Ruler</a>
+      <a href="index.html">Blog</a>
+      <a href="../about.html">About</a>
+      <a href="../contact.html">Contact</a>
+      <a href="../privacy-policy.html">Privacy Policy</a>
+      <a href="../cookie-policy.html">Cookie Policy</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>

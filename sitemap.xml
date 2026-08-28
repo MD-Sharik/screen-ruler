@@ -11,6 +11,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://onlinescale.me/blog/mm-cm-inches-feet-practical-guide.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://onlinescale.me/blog/why-does-the-us-still-use-inches.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

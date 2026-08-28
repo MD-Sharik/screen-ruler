@@ -4,3 +4,7 @@ Thumbs.db
 .vscode/
 .idea/
 node_modules/
+
+# Unprocessed source logo (1383x1137) — kept locally for regenerating
+# icons at other sizes if ever needed; not referenced by the site itself.
+logo-source.png

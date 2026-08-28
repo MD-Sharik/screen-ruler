@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PPI vs. DPI: What's the Difference, and Why Your Screen Can't Measure Itself</title>
+<meta name="description" content="PPI and DPI aren't interchangeable — one describes screen pixel density, the other printer dot density. Here's the real difference, why CSS inches lie, and how proper on-screen calibration actually works.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://onlinescale.me/blog/ppi-vs-dpi-explained.html">
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="PPI vs. DPI: What's the Difference, and Why Your Screen Can't Measure Itself">
+<meta property="og:description" content="PPI and DPI aren't interchangeable — one describes screen pixel density, the other printer dot density. Here's the real difference, why CSS inches lie, and how proper on-screen calibration actually works.">
+<meta property="og:url" content="https://onlinescale.me/blog/ppi-vs-dpi-explained.html">
+<meta property="og:site_name" content="Screen Ruler">
+<meta name="twitter:card" content="summary">
+
+<meta name="theme-color" content="#ffffff">
+<link rel="manifest" href="../manifest.json">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect x='6' y='30' width='88' height='40' rx='4' fill='%23ffffff' stroke='%232563eb' stroke-width='4'/%3E%3Cline x1='20' y1='30' x2='20' y2='45' stroke='%232563eb' stroke-width='4'/%3E%3Cline x1='35' y1='30' x2='35' y2='40' stroke='%232563eb' stroke-width='4'/%3E%3Cline x1='50' y1='30' x2='50' y2='45' stroke='%232563eb' stroke-width='4'/%3E%3Cline x1='65' y1='30' x2='65' y2='40' stroke='%232563eb' stroke-width='4'/%3E%3Cline x1='80' y1='30' x2='80' y2='45' stroke='%232563eb' stroke-width='4'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "PPI vs. DPI: What's the Difference, and Why Your Screen Can't Measure Itself",
+  "description": "PPI and DPI aren't interchangeable — one describes screen pixel density, the other printer dot density. Here's the real difference, why CSS inches lie, and how proper on-screen calibration actually works.",
+  "datePublished": "2026-08-28",
+  "dateModified": "2026-08-28",
+  "author": {
+    "@type": "Person",
+    "name": "MD-Sharik",
+    "url": "https://github.com/MD-Sharik"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Screen Ruler",
+    "url": "https://onlinescale.me/"
+  },
+  "mainEntityOfPage": "https://onlinescale.me/blog/ppi-vs-dpi-explained.html"
+}
+</script>
+
+<style>
+  :root{
+    --bg:#f7f9fc;--paper:#ffffff;--ink:#0f172a;--ink-soft:#64748b;
+    --line:#e2e8f0;--accent:#2563eb;--accent-hover:#1d4ed8;--accent-soft:#eff4ff;--accent-ink:#ffffff;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{background:var(--bg);color:var(--ink);font-family:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased;}
+  header.site{background:var(--paper);border-bottom:1px solid var(--line);}
+  .header-inner{max-width:1120px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+  .brand{display:flex;align-items:center;gap:11px;font-weight:700;font-size:19px;letter-spacing:-.02em;color:var(--ink);text-decoration:none;}
+  .brand-mark{width:34px;height:34px;border-radius:9px;background:var(--accent);display:flex;align-items:center;justify-content:center;flex:none;}
+  .btn{font:inherit;font-weight:600;font-size:14px;border-radius:999px;border:1px solid transparent;background:var(--accent);color:var(--accent-ink);padding:9px 20px;cursor:pointer;text-decoration:none;display:inline-block;transition:background .15s ease;}
+  .btn:hover{background:var(--accent-hover);}
+
+  main{max-width:700px;margin:0 auto;padding:56px 24px 90px;}
+  .crumb{font-size:14px;margin:0 0 20px;}
+  .crumb a{color:var(--ink-soft);text-decoration:none;}
+  .crumb a:hover{color:var(--accent);}
+
+  h1{font-size:clamp(28px,4.2vw,40px);line-height:1.16;margin:0 0 14px;font-weight:800;letter-spacing:-.03em;}
+  .meta{color:var(--ink-soft);font-size:14px;margin:0 0 36px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+  .meta .dot{width:3px;height:3px;border-radius:50%;background:var(--ink-soft);}
+
+  article h2{font-size:22px;margin:38px 0 12px;font-weight:700;letter-spacing:-.02em;}
+  article h3{font-size:17.5px;margin:28px 0 10px;font-weight:700;letter-spacing:-.01em;}
+  article p{color:var(--ink-soft);font-size:16.5px;margin:0 0 18px;}
+  article ul{margin:0 0 18px;padding-left:22px;}
+  article li{color:var(--ink-soft);font-size:16.5px;margin-bottom:10px;}
+  article li strong, article p strong{color:var(--ink);}
+  article code{background:var(--accent-soft);color:#1e3a8a;padding:2px 6px;border-radius:5px;font-size:14.5px;}
+
+  .callout{
+    background:var(--paper);border:1px solid var(--line);border-radius:14px;
+    padding:20px 22px;margin:26px 0;
+  }
+  .callout p{margin:0;}
+
+  .cta{
+    background:var(--accent-soft);border:1px solid #c7dbff;border-radius:16px;
+    padding:24px 26px;margin:44px 0 8px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;
+  }
+  .cta p{margin:0;color:#1e3a8a;font-size:15px;max-width:40ch;}
+  .cta p strong{color:#1e3a8a;}
+
+  footer.site{border-top:1px solid var(--line);margin-top:60px;}
+  .footer-inner{max-width:1120px;margin:0 auto;padding:28px 24px;display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between;color:var(--ink-soft);font-size:13.5px;}
+  .footer-links{display:flex;gap:20px;flex-wrap:wrap;}
+  .footer-links a{color:var(--ink-soft);text-decoration:none;}
+  .footer-links a:hover{color:var(--accent);}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="header-inner">
+    <a class="brand" href="../index.html">
+      <span class="brand-mark">
+        <svg width="20" height="20" viewBox="0 0 100 100" aria-hidden="true">
+          <rect x="6" y="32" width="88" height="36" rx="5" fill="none" stroke="#fff" stroke-width="7"/>
+          <line x1="26" y1="32" x2="26" y2="50" stroke="#fff" stroke-width="7"/>
+          <line x1="46" y1="32" x2="46" y2="44" stroke="#fff" stroke-width="7"/>
+          <line x1="66" y1="32" x2="66" y2="50" stroke="#fff" stroke-width="7"/>
+        </svg>
+      </span>
+      Screen Ruler
+    </a>
+    <a class="btn" href="../index.html">Open the ruler</a>
+  </div>
+</header>
+
+<main>
+  <p class="crumb"><a href="index.html">← Back to blog</a></p>
+
+  <h1>PPI vs. DPI: What's the Difference, and Why Your Screen Can't Measure Itself</h1>
+  <p class="meta">
+    <span>MD-Sharik</span>
+    <span class="dot"></span>
+    <span>August 28, 2026</span>
+    <span class="dot"></span>
+    <span>5 min read</span>
+  </p>
+
+  <article>
+    <p>The digital design and development world suffers from a severe, everyday misunderstanding of units — specifically, treating PPI and DPI as interchangeable. Although we use them that way constantly, they refer to very different physical realities. Whether you're designing for the web or producing a physical printed asset, the distinction matters: get it wrong and you end up with blurry web assets, broken scaling in UI work, or print jobs that come out at the wrong physical size.</p>
+    <p><strong>PPI (pixels per inch)</strong> describes the density of light-emitting hardware in an actual computer monitor. <strong>DPI (dots per inch)</strong> describes the number of distinct points a mechanical output device — a printer — can place per physical inch on paper. They're measuring two different things, on two different kinds of hardware.</p>
+
+    <h2>PPI (Pixels Per Inch)</h2>
+    <p>Pixels are the physical density of dots displayed on a digital screen — by definition, each one is made up of red, green, and blue light elements displaying information simultaneously.</p>
+    <p>PPI is fixed by the physical hardware. For example, a 27-inch monitor at 4K (3840 × 2160 pixels) works out to roughly 163 PPI. Nothing about that changes through software.</p>
+    <p>A digital file has no inherent physical size of its own — that's entirely contingent on the hardware displaying it. Build a 1000 × 1000px canvas, and if you display it on a 100 PPI screen, it renders at 10 inches square. Drag that same file onto a 500 PPI smartphone, and it becomes a 2-inch square — still 1000 × 1000px, no scaling applied, just a different physical size because the hardware is different.</p>
+
+    <h2>DPI (Dots Per Inch)</h2>
+    <p>DPI is a value tied to physical printing and scanning. Printers spray physical dots of color (cyan, magenta, yellow, and key/black — CMYK) onto paper at a given density. Since that's four colors instead of the three RGB lights a screen uses, a printer needs far more dots per square inch to simulate the equivalent of one pixel's color.</p>
+    <p>DPI has to run much higher than a file's PPI. Most professional print work targets 300 DPI, and printers themselves are often capable of significantly higher output resolution.</p>
+
+    <h3>The "72 DPI for Web" Myth</h3>
+    <p>For years, designers exported web assets at 72 DPI. That convention traces back to the original 1984 Macintosh, whose 72 PPI display made a pixel and a printer's point roughly equivalent. But modern displays commonly measure 100+ PPI at 1080p, and well over 450 PPI on phones — which makes a 72 DPI file attribute completely meaningless for web content. You can't represent an inch through image metadata; the only thing that actually matters for on-screen rendering is the absolute pixel dimensions of the image, and DPI metadata never changes that.</p>
+
+    <h2>Screen Measurement Is Broken by Default for the Web</h2>
+    <p>Hold a physical ruler up to your monitor and try to verify an element styled with <code>width: 1in</code> in CSS — it won't match. Writing <code>1in</code> assumes the browser knows your monitor's actual PPI and calculates the matching pixel count. It doesn't, and historically never has: W3C CSS guidelines define 1 inch as exactly 96 pixels, full stop, regardless of your actual display.</p>
+    <p>If your screen measures 144 PPI, that "1 inch" CSS rule renders smaller than a real inch. On a lower-PPI screen, it renders larger.</p>
+    <p>OS-level display scaling compounds this further. A 144 PPI screen with scaling set to 150% will render your "1 CSS inch" smaller still, because the browser is mapping 1 logical CSS pixel to a 2×2 block of physical hardware pixels to keep everything legible at that density.</p>
+
+    <div class="callout">
+      <p><strong>The upshot:</strong> there is no reliable way for a browser to know your screen's true physical size. <code>in</code>, <code>cm</code>, and <code>mm</code> units in CSS are all silently anchored to that same fixed 96px-per-inch assumption — they cannot be calibrated to the physical screen, no matter what device is rendering them.</p>
+    </div>
+
+    <h2>How to Actually Measure Screens Correctly</h2>
+    <p>A few practical rules follow directly from all of this:</p>
+    <ul>
+      <li><strong>Never rely on <code>in</code>, <code>cm</code>, or <code>mm</code> in a stylesheet</strong> for anything that needs to be physically accurate. Use <code>px</code>, relative units, or the device pixel ratio instead.</li>
+      <li><strong>Don't bother setting DPI metadata on exported web images.</strong> That header value plays no role in how a browser renders the file.</li>
+      <li><strong>Export at 2× the final dimension for high-density screens.</strong> That's what guarantees sharp rendering on any high-DPI display, since the browser maps each CSS pixel to a 2×2 block of physical pixels.</li>
+      <li><strong>Export at 300 PPI for commercial print work</strong> — that's the standard target file resolution for professional printing.</li>
+      <li><strong>Never assume physical size is measurable on screen without the user's help.</strong> There's no shortcut around this: build a calibration step into your software. Show the user a reference object — a credit card, a sheet of paper — let them match it against an on-screen shape, and use that to calibrate against their device's actual pixel ratio.</li>
+    </ul>
+
+    <p>That last point is the entire reason Screen Ruler exists as a calibration-first tool rather than a fixed-DPI one. No browser can tell you your screen's true PPI — the only trustworthy number is the one you get by checking against something physically real.</p>
+  </article>
+
+  <div class="cta">
+    <p><strong>See this in practice.</strong> Screen Ruler calibrates against a real object you already own, then draws accurate inch and centimeter markings for your exact display.</p>
+    <a class="btn" href="../index.html">Try the ruler</a>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="footer-inner">
+    <span>© Screen Ruler</span>
+    <nav class="footer-links">
+      <a href="../index.html">Ruler</a>
+      <a href="index.html">Blog</a>
+      <a href="../about.html">About</a>
+      <a href="../contact.html">Contact</a>
+      <a href="../privacy-policy.html">Privacy Policy</a>
+      <a href="../cookie-policy.html">Cookie Policy</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>

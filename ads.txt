@@ -1,0 +1,6 @@
+
+google.com, pub-2408586648009670, DIRECT, f08c47fec0942fa0
+ezoic.com, 19390, RESELLER
+appnexus.com, 12345, RESELLER
+openx.com, 12345, RESELLER
+rubicon.com, 12345, RESELLER

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Privacy Policy — Screen Ruler</title>
-<meta name="description" content="Screen Ruler's privacy policy. This tool has no backend, no accounts, and no analytics — the only data stored is a calibration value kept in your browser's local storage.">
+<meta name="description" content="Screen Ruler's privacy policy. This client-side tool stores calibration locally. Optional Google Analytics is controlled by explicit consent through the site's existing consent manager.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://onlinescale.me/privacy-policy.html">
 <meta name="theme-color" content="#ffffff">
@@ -62,9 +62,9 @@
 
 <main>
   <h1>Privacy Policy</h1>
-  <p class="updated">Last updated: August 22, 2026</p>
+  <p class="updated">Last updated: November 16, 2026</p>
 
-  <p>Screen Ruler is a static, client-side tool. There is no backend server, no user accounts, and no analytics or tracking of any kind. This policy explains exactly what little data exists and where it goes.</p>
+  <p>Screen Ruler is a static, client-side tool. The ruler has no user accounts and saves calibration in your browser. The website also uses the existing Ezoic advertising and consent services and optional Google Analytics as described below.</p>
 
   <h2>What we store</h2>
   <p>When you calibrate the ruler, a single number — pixels per millimeter for your display — is saved using your browser's <code>localStorage</code>. This value:</p>
@@ -74,17 +74,19 @@
     <li>Can be erased at any time by clearing your browser's site data for this page.</li>
   </ul>
 
-  <h2>What we don't collect</h2>
-  <p>We do not use cookies, analytics scripts, advertising trackers, or any form of visitor logging. We don't know who visits this site, how often, or what they measure with it.</p>
+  <h2>Optional website analytics</h2>
+  <p>Google Analytics stays off until the existing Ezoic consent manager provides explicit consent for Google and analytics measurement. Geographic exemptions and legitimate interest are not treated as Analytics consent. Where explicit consent cannot be confirmed, Google Analytics stays off.</p>
+  <p>After consent, Google may process a pseudonymous cookie identifier, page paths, browser and device information, approximate location, and visit times. Our Analytics code removes query strings and URL fragments, uses a fixed site title, and sends only the origin of referring websites. It does not collect ruler measurements, form entries, or uploaded files. Advertising storage, Google signals, ad user data, and ad personalization are disabled for this Analytics integration.</p>
+  <p>Analytics cookies expire after up to 180 days. Use the existing consent manager to change or withdraw consent. Withdrawal stops future Analytics measurement and removes this integration's accessible GA cookies, but cannot erase data already sent. The persistent Analytics privacy control explains this integration. Existing Ezoic consent and services remain separate and are not changed by this Analytics setup.</p>
 
   <h2>Third-party services</h2>
   <p>This page loads the Inter typeface from <strong>Google Fonts</strong>. Loading a font causes your browser to request font files from Google's servers, which may log standard request data (such as your IP address) under <a href="https://policies.google.com/privacy" rel="noopener">Google's own privacy policy</a>. We don't control or receive this data.</p>
 
   <h2>Children's privacy</h2>
-  <p>Screen Ruler collects no personal information from anyone, including children.</p>
+  <p>The ruler does not ask for names, accounts, or other identifying details. Optional website analytics may process the technical information described above after consent. Do not submit personal information through the ruler.</p>
 
   <h2>Changes to this policy</h2>
-  <p>If this site's data practices ever change — for example, if analytics or advertising are added in the future — this page will be updated first, with the date above revised accordingly.</p>
+  <p>If this site's data practices change, this page and its last-updated date will be revised. The Analytics privacy control provides a persistent explanation of optional Google Analytics.</p>
 
   <h2>Contact</h2>
   <p>Questions about this policy can be raised on the <a href="https://github.com/MD-Sharik/screen-ruler/issues" rel="noopener">GitHub repository</a>.</p>
@@ -104,5 +106,6 @@
   </div>
 </footer>
 
+  <script defer src="/analytics-consent.js"></script>
 </body>
 </html>

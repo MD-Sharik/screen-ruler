@@ -1,0 +1,37 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Consent-controlled Analytics</title><meta name="robots" content="noindex"></head><body><script>(function frameRuntime(c) {
+      if (window.parent === window || location.origin !== c.origin) return;
+      var layer = 'siteAnalyticsLayer';
+      function tag() { (window[layer] = window[layer] || []).push(arguments); }
+      window['ga-disable-' + c.id] = false;
+      // This frame contains only this Analytics tag. Block pending unload flushes
+      // before removing it after withdrawal, without changing parent transports.
+      window.stopConsentedAnalytics = function () {
+        window['ga-disable-' + c.id] = true;
+        try { Object.defineProperty(navigator, 'sendBeacon', {configurable: true, value: function () { return false; }}); } catch (_) {}
+        window.fetch = function () { return Promise.resolve(new Response(null, {status: 204})); };
+        if (window.XMLHttpRequest) window.XMLHttpRequest.prototype.send = function () {};
+        window.Image = function () { return document.createElement('span'); };
+      };
+      tag('consent', 'default', {analytics_storage: 'granted', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied'});
+      tag('set', 'ads_data_redaction', true);
+      tag('set', 'url_passthrough', false);
+      tag('set', {send_page_view: false, allow_google_signals: false, allow_ad_personalization_signals: false, page_location: c.page_location, page_referrer: c.page_referrer, page_title: c.title, cookie_domain: 'none', cookie_prefix: c.prefix, cookie_path: c.cookiePath, cookie_expires: 15552000, cookie_update: false, cookie_flags: 'SameSite=Lax;Secure', ignore_referrer: true, user_id: null});
+      tag('js', new Date());
+      tag('config', c.id, {send_page_view: false, allow_google_signals: false,
+        allow_ad_personalization_signals: false, cookie_domain: 'none', cookie_prefix: c.prefix,
+        cookie_path: c.cookiePath, cookie_expires: 15552000, cookie_update: false,
+        cookie_flags: 'SameSite=Lax;Secure', page_location: c.page_location,
+        page_referrer: c.page_referrer, page_title: c.title, ignore_referrer: true, user_id: null});
+      window.addEventListener('message', function (event) {
+        if (event.source !== window.parent || event.origin !== c.origin || !event.data || event.data.kind !== 'consented-pageview') return;
+        var page = event.data.page;
+        if (!page || page.send_to !== c.id) return;
+        try { var url = new URL(page.page_location); if (url.origin !== c.origin || url.search || url.hash) return; } catch (_) { return; }
+        tag('event', 'page_view', {send_to: c.id, page_location: page.page_location,
+          page_referrer: (function () { try { return new URL(page.page_referrer).origin; } catch (_) { return ''; } })(), page_title: c.title});
+      });
+      var script = document.createElement('script'); script.async = true;
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(c.id) + '&l=' + layer;
+      script.referrerPolicy = 'origin'; document.head.appendChild(script);
+    })({"id": "G-H2GNMVRZHH", "title": "OnlineScale", "cookiePath": "/", "prefix": "siteGH2GNMVRZHH", "origin": "https://onlinescale.me", "page_location": "https://onlinescale.me/", "page_referrer": ""});
+</script></body></html>

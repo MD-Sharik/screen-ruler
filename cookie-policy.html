@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Cookie Policy — Screen Ruler</title>
-<meta name="description" content="Screen Ruler does not use cookies. This page explains the difference between cookies and the local storage this tool uses to remember your screen calibration.">
+<meta name="description" content="Screen Ruler stores calibration locally. Optional Google Analytics uses cookies only after explicit consent through the existing consent manager.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://onlinescale.me/cookie-policy.html">
 <meta name="theme-color" content="#ffffff">
@@ -63,23 +63,26 @@
 
 <main>
   <h1>Cookie Policy</h1>
-  <p class="updated">Last updated: August 22, 2026</p>
+  <p class="updated">Last updated: November 16, 2026</p>
 
-  <p><strong>Screen Ruler does not use cookies</strong> — no session cookies, no advertising cookies, no third-party tracking cookies. Nothing is set in your browser's cookie jar by this site.</p>
+  <p><strong>The ruler saves calibration in local storage.</strong> The website also uses existing Ezoic advertising and consent services. Optional Google Analytics can set separate cookies only after the consent manager provides explicit Analytics consent. It stays off when that consent cannot be confirmed.</p>
 
   <h2>Cookies vs. local storage</h2>
   <p>These two are often confused, so to be precise: a cookie is a small piece of data sent to a server with every request, typically used to identify a visitor across page loads. <strong>Local storage</strong> is different — it's a browser-only storage area that a page can read and write, but which is never automatically sent anywhere.</p>
-  <p>Screen Ruler uses local storage, not cookies, to remember one thing: the pixels-per-millimeter value from your last screen calibration, so you don't have to redo it every visit. That value never leaves your browser.</p>
+  <p>The ruler uses local storage to remember the pixels-per-millimeter value from your last screen calibration, so you don't have to redo it every visit. That value never leaves your browser.</p>
 
   <h2>What's stored</h2>
   <table>
     <tr><th>Name</th><th>Type</th><th>Purpose</th><th>Sent to a server?</th></tr>
     <tr><td><code>screenRulerCalibration_v1</code></td><td>localStorage</td><td>Remembers your screen's calibration</td><td>No</td></tr>
+    <tr><td>Names beginning <code>siteG</code> and containing <code>_ga</code></td><td>Cookie, up to 180 days</td><td>Optional Google Analytics after explicit consent</td><td>Yes, to Google Analytics</td></tr>
   </table>
 
   <h2>Third-party requests</h2>
   <p>This page loads the Inter typeface from Google Fonts, which involves a request to Google's servers for the font files. Google may set its own cookies or log request data under its own policies — see our <a href="privacy-policy.html">Privacy Policy</a> for details.</p>
 
+  <h2>Managing Analytics consent</h2>
+  <p>Use the existing Ezoic consent manager to change or withdraw consent. Google Analytics does not load or send measurement requests where explicit consent cannot be confirmed. Use the persistent Analytics privacy control to read the Analytics notice. Existing Ezoic services have their own consent controls. See the <a href="privacy-policy.html">Privacy Policy</a> for data types and Google's privacy information.</p>
   <h2>Managing local storage</h2>
   <p>You can clear the stored calibration at any time through your browser's site settings (usually under "Site data" or "Storage" in your browser's privacy settings), or by using your browser's private/incognito mode, which discards it automatically when you close the window.</p>
 </main>
@@ -98,5 +101,6 @@
   </div>
 </footer>
 
+  <script defer src="/analytics-consent.js"></script>
 </body>
 </html>

@@ -145,20 +145,31 @@
     if (cfg.cmp) { ui.banner.hidden = true; root.querySelector('#cmp-note').hidden = false; }
   }
   function connectCMP() {
-    var attempts = 0;
+    var attached = null;
+    function applyConsent(data, success) {
+      var final = data && (data.eventStatus === 'tcloaded' || data.eventStatus === 'useractioncomplete');
+      var explicitScope = data && (data.gdprApplies === true || data.eventStatus === 'useractioncomplete');
+      var allow = success === true && final && explicitScope && data.cmpStatus === 'loaded' &&
+        data.purpose && data.purpose.consents && data.purpose.consents[1] === true && data.purpose.consents[8] === true &&
+        data.vendor && data.vendor.consents && data.vendor.consents[755] === true;
+      setEnabled(allow === true);
+    }
     function connect() {
-      if (typeof window.__tcfapi !== 'function') { if (++attempts < 40) setTimeout(connect, 250); return; }
-      window.__tcfapi('addEventListener', 2, function (data, success) {
-        var final = data && (data.eventStatus === 'tcloaded' || data.eventStatus === 'useractioncomplete');
-        var explicitScope = data && (data.gdprApplies === true || data.eventStatus === 'useractioncomplete');
-        var allow = success === true && final && explicitScope && data.cmpStatus === 'loaded' &&
-          data.purpose && data.purpose.consents && data.purpose.consents[1] === true && data.purpose.consents[8] === true &&
-          data.vendor && data.vendor.consents && data.vendor.consents[755] === true;
-        setEnabled(allow === true);
-      });
+      var api = window.__tcfapi;
+      if (typeof api !== 'function') { setEnabled(false); return; }
+      if (attached !== api) {
+        setEnabled(false);
+        attached = api;
+        api('addEventListener', 2, applyConsent);
+      }
+      // The site's CMP can replace its startup stub. Read its current local
+      // decision as a fallback if that replacement drops a queued listener.
+      api('getTCData', 2, applyConsent);
     }
     connect();
+    setInterval(connect, 1000);
   }
+
   function start() {
     render();
     if (cfg.cmp) connectCMP();

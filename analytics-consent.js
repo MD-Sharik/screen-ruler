@@ -49,7 +49,9 @@
     enabled = allow === true;
     window['ga-disable-' + id] = !enabled;
     if (!enabled) {
-      lastPath = '';
+      // Preserve CMP page identity across consent refreshes. Revocation still
+      // stops/removes the runtime immediately, but regrant alone is not a new view.
+      if (!cfg.cmp) lastPath = '';
       if (cfg.cmp) {
         if (analyticsFrame) {
           try {

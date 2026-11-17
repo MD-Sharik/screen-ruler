@@ -27,11 +27,11 @@
         var page = event.data.page;
         if (!page || page.send_to !== c.id) return;
         try { var url = new URL(page.page_location); if (url.origin !== c.origin || url.search || url.hash) return; } catch (_) { return; }
-        tag('event', 'page_view', {send_to: c.id, page_location: page.page_location,
+        tag('event', 'page_view', {send_to: c.id, site_id: "onlinescale", page_location: page.page_location,
           page_referrer: (function () { try { return new URL(page.page_referrer).origin; } catch (_) { return ''; } })(), page_title: c.title});
       });
       var script = document.createElement('script'); script.async = true;
       script.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(c.id) + '&l=' + layer;
       script.referrerPolicy = 'origin'; document.head.appendChild(script);
-    })({"id": "G-H2GNMVRZHH", "title": "OnlineScale", "cookiePath": "/", "prefix": "siteGH2GNMVRZHH", "origin": "https://onlinescale.me", "page_location": "https://onlinescale.me/", "page_referrer": ""});
+    })({"id": "G-8S7SE9F0PY", "title": "OnlineScale", "cookiePath": "/", "prefix": "siteG8S7SE9F0PY", "origin": "https://onlinescale.me", "page_location": "https://onlinescale.me/", "page_referrer": ""});
 </script></body></html>
